@@ -1,0 +1,16 @@
+CREATE TYPE role_enum AS ENUM (
+    'ROLE_ADMIN',
+    'ROLE_INSTRUCTOR',
+    'ROLE_STUDENT'
+);
+
+CREATE TABLE tb_users (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE,
+    password VARCHAR(255),
+    role role_enum,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
